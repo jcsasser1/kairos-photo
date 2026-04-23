@@ -91,7 +91,7 @@ export default async function PortraitsPage() {
       title: "Graduates",
       description:
         "Celebrate your milestone with portraits that are fun, authentic, and completely you. Cap and gown or casual — your call.",
-      price: "From $200/hr",
+      price: "From $150",
     },
     {
       image: headshotsCardImage,
