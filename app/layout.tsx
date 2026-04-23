@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Playfair_Display, Inter } from "next/font/google";
-import { defaultMetadata } from "@/lib/metadata";
-import { generateLocalBusinessJsonLd, jsonLdScript } from "@/lib/metadata";
+import { defaultMetadata, generateLocalBusinessJsonLd, generatePersonJsonLd, jsonLdScript } from "@/lib/metadata";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
 import "./globals.css";
@@ -41,6 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const localBusinessJsonLd = generateLocalBusinessJsonLd();
+  const personJsonLd = generatePersonJsonLd();
 
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
@@ -49,6 +49,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: jsonLdScript(localBusinessJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: jsonLdScript(personJsonLd),
           }}
         />
         <Script

@@ -11,6 +11,10 @@ import { business, socialLinks } from "./data";
 
 const siteUrl = business.website;
 
+// Default OG image (hero photo from Cloudinary) — 1200x630 recommended
+const defaultOgImage = "https://res.cloudinary.com/dmhifjh7n/image/upload/f_auto,q_auto,w_1200,h_630,c_fill/DSC08902_kmmzgj";
+const defaultLogo = "https://res.cloudinary.com/dmhifjh7n/image/upload/f_auto,q_auto/Asset_16_acnqys";
+
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -42,11 +46,20 @@ export const defaultMetadata: Metadata = {
     siteName: business.name,
     title: `${business.name} | ${business.tagline}`,
     description: `Wedding, portrait, and real estate photography in Western North Carolina. ${business.tagline}`,
+    images: [
+      {
+        url: defaultOgImage,
+        width: 1200,
+        height: 630,
+        alt: `${business.name} — ${business.tagline}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${business.name} | ${business.tagline}`,
     description: `Wedding, portrait, and real estate photography in Western North Carolina. ${business.tagline}`,
+    images: [defaultOgImage],
   },
   robots: {
     index: true,
@@ -86,7 +99,7 @@ export function generatePageMetadata({
   noIndex = false,
 }: PageMetadataOptions): Metadata {
   const url = `${siteUrl}${path}`;
-  const ogImage = image || `${siteUrl}/og-default.jpg`;
+  const ogImage = image || defaultOgImage;
 
   return {
     title,
@@ -175,7 +188,8 @@ export function generateLocalBusinessJsonLd() {
       },
     ],
     priceRange: "$$",
-    image: `${siteUrl}/og-default.jpg`,
+    image: defaultOgImage,
+    logo: defaultLogo,
     sameAs: socialLinks.map((link) => link.url),
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
@@ -213,7 +227,7 @@ export function generateArticleJsonLd({
   slug,
   date,
   image,
-  author = business.name,
+  author = "Jeremy Sasser",
 }: ArticleJsonLdOptions) {
   return {
     "@context": "https://schema.org",
@@ -224,9 +238,9 @@ export function generateArticleJsonLd({
     datePublished: date,
     dateModified: date,
     author: {
-      "@type": "Organization",
+      "@type": "Person",
       name: author,
-      url: siteUrl,
+      url: `${siteUrl}/about`,
     },
     publisher: {
       "@type": "Organization",
@@ -234,7 +248,7 @@ export function generateArticleJsonLd({
       url: siteUrl,
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/logo.png`,
+        url: defaultLogo,
       },
     },
     mainEntityOfPage: {
@@ -280,6 +294,55 @@ export function generateImageGalleryJsonLd({
         name: business.name,
       },
     })),
+  };
+}
+
+// -----------------------------------------------------------------------------
+// JSON-LD: BreadcrumbList
+// -----------------------------------------------------------------------------
+
+interface BreadcrumbItem {
+  name: string;
+  path: string;
+}
+
+export function generateBreadcrumbJsonLd(items: BreadcrumbItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${siteUrl}${item.path}`,
+    })),
+  };
+}
+
+// -----------------------------------------------------------------------------
+// JSON-LD: Person (Jeremy Sasser)
+// -----------------------------------------------------------------------------
+
+export function generatePersonJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Jeremy Sasser",
+    jobTitle: "Photographer",
+    url: `${siteUrl}/about`,
+    image: "https://res.cloudinary.com/dmhifjh7n/image/upload/f_auto,q_auto,w_800/B_B_SM_-_Jeremy-34_amovsv",
+    worksFor: {
+      "@type": "Organization",
+      name: business.name,
+      url: siteUrl,
+    },
+    sameAs: socialLinks.map((link) => link.url),
+    knowsAbout: [
+      "Wedding Photography",
+      "Portrait Photography",
+      "Real Estate Photography",
+      "Western North Carolina",
+    ],
   };
 }
 
