@@ -186,26 +186,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* ================================================================= */}
-      {/* 3. Map Placeholder                                                 */}
-      {/* ================================================================= */}
-      <section className="bg-primary py-20 md:py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <AnimatedSection>
-            <div className="flex h-80 items-center justify-center rounded-lg bg-secondary md:h-96">
-              <div className="text-center">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mx-auto text-accent">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-                <p className="mt-4 font-serif text-xl font-bold text-text-primary">Map &mdash; Sylva, NC</p>
-                <p className="mt-2 font-sans text-sm text-text-muted">Located in the heart of Western North Carolina</p>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
     </>
   );
 }
