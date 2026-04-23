@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-primary text-text-primary;
+  }
+
+  ::selection {
+    @apply bg-accent/30 text-white;
+  }
+}
+
+@layer components {
+  .label-text {
+    @apply font-sans uppercase tracking-label text-xs text-text-muted;
+  }
+
+  .gold-gradient {
+    @apply bg-gradient-to-r from-accent via-yellow-600 to-accent bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .masonry-grid {
+    column-count: 3;
+    column-gap: 1rem;
+  }
+
+  @media (max-width: 1024px) {
+    .masonry-grid {
+      column-count: 2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .masonry-grid {
+      column-count: 1;
+    }
+  }
+
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+}
