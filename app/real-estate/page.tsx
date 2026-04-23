@@ -149,7 +149,7 @@ const realEstateServices = [
     ),
     title: "Standard Shoot",
     description:
-      "HDR interiors and exteriors with professional editing. Perfect for residential listings up to 3,000 sq ft.",
+      "HDR interiors and exteriors with professional editing. Perfect for residential listings.",
   },
   {
     icon: (
