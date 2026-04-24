@@ -5,6 +5,7 @@ import { fetchCloudinaryFolder } from "@/lib/cloudinary";
 import HeroSection from "@/components/sections/HeroSection";
 import MasonryGallery from "@/components/sections/MasonryGallery";
 import FAQAccordion from "@/components/sections/FAQAccordion";
+import { LeadCaptureInline } from "@/components/sections/LeadCapture";
 import Button from "@/components/ui/Button";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 
@@ -233,9 +234,12 @@ export default async function PortraitsPage() {
                 session.
               </p>
               <div className="mt-8">
-                <Button variant="primary" size="md">
-                  Download the Style Guide
-                </Button>
+                <LeadCaptureInline
+                  subtext="Enter your email and I'll send it straight to your inbox."
+                  ctaLabel="Send Me the Guide"
+                  magnetKey="style-guide"
+                  source="style-guide-inline"
+                />
               </div>
             </AnimatedSection>
           </div>

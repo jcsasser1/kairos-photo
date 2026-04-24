@@ -4,6 +4,7 @@ import { Playfair_Display, Inter } from "next/font/google";
 import { defaultMetadata, generateLocalBusinessJsonLd, generatePersonJsonLd, jsonLdScript } from "@/lib/metadata";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
+import { ExitIntentPopup } from "@/components/sections/LeadCapture";
 import "./globals.css";
 
 // ---------------------------------------------------------------------------
@@ -64,6 +65,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <ExitIntentPopup magnetKey="style-guide" source="exit-intent" />
       </body>
     </html>
   );
