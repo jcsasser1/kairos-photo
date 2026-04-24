@@ -127,6 +127,7 @@ interface LeadCaptureInlineProps {
   source?: string
   successMessage?: string
   className?: string
+  hideDisclaimer?: boolean
 }
 
 export function LeadCaptureInline({
@@ -137,6 +138,7 @@ export function LeadCaptureInline({
   source = 'style-guide-inline',
   successMessage = "Check your inbox — your guide is on the way.",
   className = '',
+  hideDisclaimer = false,
 }: LeadCaptureInlineProps) {
   const [email, setEmail] = useState('')
   const [website, setWebsite] = useState('') // honeypot
@@ -255,9 +257,11 @@ export function LeadCaptureInline({
           </p>
         )}
 
-        <p className="font-sans text-xs text-text-muted/70">
-          No spam. Unsubscribe anytime.
-        </p>
+        {!hideDisclaimer && (
+          <p className="font-sans text-xs text-text-muted/70">
+            No spam. Unsubscribe anytime.
+          </p>
+        )}
       </form>
     </>
   )

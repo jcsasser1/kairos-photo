@@ -239,6 +239,7 @@ export default async function PortraitsPage() {
                   ctaLabel="Send Me the Guide"
                   magnetKey="style-guide"
                   source="style-guide-inline"
+                  hideDisclaimer
                 />
               </div>
             </AnimatedSection>
