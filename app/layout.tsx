@@ -67,10 +67,10 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <ExitIntentPopup magnetKey="style-guide" source="exit-intent" />
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
       </body>
-      {process.env.NEXT_PUBLIC_GA_ID && (
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
-      )}
     </html>
   );
 }
