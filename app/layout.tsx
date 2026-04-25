@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Playfair_Display, Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { defaultMetadata, generateLocalBusinessJsonLd, generatePersonJsonLd, jsonLdScript } from "@/lib/metadata";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
@@ -67,6 +68,9 @@ export default function RootLayout({
         <Footer />
         <ExitIntentPopup magnetKey="style-guide" source="exit-intent" />
       </body>
+      {process.env.NEXT_PUBLIC_GA_ID && (
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+      )}
     </html>
   );
 }

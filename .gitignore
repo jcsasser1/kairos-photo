@@ -49,3 +49,8 @@ logs
 
 # OS
 Thumbs.db
+
+# Pricing PDFs (kept local only, not deployed)
+public/lead-magnets/Kairos_Wedding_Investment_Guide.pdf
+public/lead-magnets/Kairos_Real_Estate_Pricing_Guide.pdf
+public/lead-magnets/Kairos_Portrait_Pricing_Guide.pdf
